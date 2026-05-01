@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WallaBot Pro — Bot de Ventas Inteligente para Wallapop</title>
+    <meta name="description" content="Automatiza tus ventas en Wallapop con IA. Responde chats, negocia precios y cierra ventas 24/7 mientras duermes. WallaBot Pro, tu comercial virtual.">
+    <meta name="keywords" content="wallapop bot, automatizar wallapop, bot ventas, IA ventas wallapop">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">Walla<span class="accent">Bot</span> Pro</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#features">Características</a></li>
+                <li><a href="#how-it-works">Cómo funciona</a></li>
+                <li><a href="#pricing">Precios</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#pricing" class="btn btn-primary nav-cta">Consigue tu licencia</a>
+            <button class="hamburger" id="hamburger" aria-label="Menú">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                <span>Bot con IA activa 24/7</span>
+            </div>
+            <h1>
+                Vende en Wallapop<br>
+                <span class="gradient-text">mientras duermes</span>
+            </h1>
+            <p class="hero-subtitle">
+                Tu comercial virtual con inteligencia artificial. Responde chats, 
+                negocia precios y cierra ventas automáticamente.
+                <strong>Sin que nadie note que es un bot.</strong>
+            </p>
+            <div class="hero-ctas">
+                <a href="#pricing" class="btn btn-primary btn-lg">
+                    <span>Empezar ahora</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#how-it-works" class="btn btn-glass btn-lg">
+                    <span>Ver demo</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="24">0</span><span class="stat-suffix">/7</span>
+                    <span class="stat-label">Activo</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="30">0</span><span class="stat-suffix">s</span>
+                    <span class="stat-label">Respuesta media</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Indetectable</span>
+                </div>
+            </div>
+        </div>
+        <!-- Chat mockup -->
+        <div class="hero-mockup">
+            <div class="chat-window glass">
+                <div class="chat-header">
+                    <div class="chat-user">
+                        <div class="avatar">🛍️</div>
+                        <div>
+                            <span class="chat-name">Comprador</span>
+                            <span class="chat-status">En línea</span>
+                        </div>
+                    </div>
+                    <div class="chat-product">
+                        <span>Taladro Percutor</span>
+                        <span class="chat-price">45€</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-demo">
+                    <div class="msg msg-in">
+                        <p>Hola, ¿sigue disponible el taladro?</p>
+                        <span class="msg-time">14:32</span>
+                    </div>
+                    <div class="msg msg-out">
+                        <p>¡Buenas! Sí, lo tengo disponible 😊 ¿Alguna duda sobre él?</p>
+                        <span class="msg-time">14:32</span>
+                        <span class="msg-bot-badge">🤖 WallaBot</span>
+                    </div>
+                    <div class="msg msg-in">
+                        <p>¿Me lo podrías dejar en 35€?</p>
+                        <span class="msg-time">14:33</span>
+                    </div>
+                    <div class="msg msg-out">
+                        <p>Uf, el precio ya está ajustado al máximo, es una ganga. Pero si lo dejas zanjado hoy te lo dejo en 42€, ¿qué dices?</p>
+                        <span class="msg-time">14:34</span>
+                        <span class="msg-bot-badge">🤖 WallaBot</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Funcionalidades</span>
+                <h2>Todo lo que necesitas para<br><span class="gradient-text">automatizar tus ventas</span></h2>
+                <p>Un bot completo que actúa como un vendedor profesional. Cada función diseñada para maximizar tus ventas.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <div class="feature-icon">🧠</div>
+                    <h3>IA Conversacional</h3>
+                    <p>Respuestas naturales generadas por IA que simulan un vendedor real. Nadie nota la diferencia.</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">💰</div>
+                    <h3>Negociación Inteligente</h3>
+                    <p>Rechaza ofertas bajas con educación y negocia hasta un precio mínimo que tú configuras (-7%).</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">📋</div>
+                    <h3>Catálogo Automático</h3>
+                    <p>Carga tu stock en CSV y el bot responde con detalles reales de cada producto sin inventar nada.</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Respuesta en 30s</h3>
+                    <p>Responde a cada mensaje en menos de 30 segundos, con pausas y velocidad de escritura humanas.</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Anti-Detección</h3>
+                    <p>Simula comportamiento humano: pausas de lectura, escritura variable, micro-pausas al pensar.</p>
+                </div>
+                <div class="feature-card glass">
+                    <div class="feature-icon">🔄</div>
+                    <h3>24/7 Sin Parar</h3>
+                    <p>El bot nunca duerme. Monitorea tus chats continuamente y responde a cualquier hora.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Proceso</span>
+                <h2>Listo en<br><span class="gradient-text">3 minutos</span></h2>
+                <p>Configuración sencilla. Sin conocimientos técnicos.</p>
+            </div>
+            <div class="steps">
+                <div class="step glass">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Instala</h3>
+                        <p>Ejecuta <code>instalar.bat</code> una sola vez. Instala el navegador necesario automáticamente.</p>
+                    </div>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="step glass">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Activa</h3>
+                        <p>Ejecuta el bot e introduce tu clave de licencia. Se vincula a tu máquina automáticamente.</p>
+                    </div>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div class="step glass">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Vende</h3>
+                        <p>Inicia sesión en Wallapop y deja al bot trabajar. Responde, negocia y cierra ventas por ti.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Precios</span>
+                <h2>Elige tu plan</h2>
+                <p>Sin suscripciones ocultas. Pago único o mensual, tú decides.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card glass">
+                    <div class="price-header">
+                        <h3>Mensual</h3>
+                        <p class="price-description">Prueba sin compromiso</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">€</span>
+                        <span class="amount">29</span>
+                        <span class="period">/mes</span>
+                    </div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> Bot completo con IA</li>
+                        <li><span class="check">✓</span> Negociación automática</li>
+                        <li><span class="check">✓</span> Catálogo CSV</li>
+                        <li><span class="check">✓</span> Soporte por email</li>
+                        <li><span class="check">✓</span> Actualizaciones incluidas</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-glass btn-block">Elegir plan</a>
+                </div>
+                <div class="price-card glass featured">
+                    <div class="price-badge">🔥 Más popular</div>
+                    <div class="price-header">
+                        <h3>Anual</h3>
+                        <p class="price-description">Ahorra un 40%</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">€</span>
+                        <span class="amount">199</span>
+                        <span class="period">/año</span>
+                    </div>
+                    <div class="price-savings">Antes 348€ · Ahorra 149€</div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> Todo lo del plan Mensual</li>
+                        <li><span class="check">✓</span> Soporte prioritario</li>
+                        <li><span class="check">✓</span> Configuración asistida</li>
+                        <li><span class="check">✓</span> Acceso beta a nuevas funciones</li>
+                        <li><span class="check">✓</span> Multi-cuenta (hasta 3)</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary btn-block">Elegir plan</a>
+                </div>
+                <div class="price-card glass">
+                    <div class="price-header">
+                        <h3>Lifetime</h3>
+                        <p class="price-description">Pago único, para siempre</p>
+                    </div>
+                    <div class="price-amount">
+                        <span class="currency">€</span>
+                        <span class="amount">499</span>
+                        <span class="period">único</span>
+                    </div>
+                    <ul class="price-features">
+                        <li><span class="check">✓</span> Todo lo del plan Anual</li>
+                        <li><span class="check">✓</span> Licencia permanente</li>
+                        <li><span class="check">✓</span> Soporte VIP de por vida</li>
+                        <li><span class="check">✓</span> Todas las actualizaciones futuras</li>
+                        <li><span class="check">✓</span> Multi-cuenta ilimitada</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-glass btn-block">Elegir plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Preguntas frecuentes</span>
+                <h2>Todo lo que necesitas saber</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item glass">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Me pueden banear de Wallapop?</span>
+                        <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El bot está diseñado para ser indetectable. Simula comportamiento humano real: pausas de lectura proporcionales al mensaje, velocidad de escritura variable con micro-pausas, y respuestas naturales generadas por IA. No envía mensajes masivos ni hace spam.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Necesito dejar el ordenador encendido?</span>
+                        <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sí, el bot se ejecuta en tu ordenador. Necesitas dejarlo encendido para que monitoree y responda los chats. Recomendamos un PC secundario o un servidor cloud barato.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Puedo personalizar las respuestas?</span>
+                        <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El bot responde basándose en tu catálogo de productos (un CSV que tú rellenas con títulos, precios y descripciones). Negocia hasta un -7% del precio publicado, configurable.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Funciona en Mac o Linux?</span>
+                        <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Actualmente el ejecutable compilado (.exe) es solo para Windows. Si usas Mac o Linux, contacta con nosotros para opciones alternativas de instalación.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>¿Qué pasa si cancelo mi licencia?</span>
+                        <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Al expirar la licencia, el bot deja de funcionar automáticamente. No se cobra nada extra. Puedes renovar en cualquier momento con una nueva clave.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-card glass">
+                <div class="contact-content">
+                    <h2>¿Listo para automatizar tus ventas?</h2>
+                    <p>Contacta conmigo para recibir tu licencia y empezar a vender en piloto automático.</p>
+                    <div class="contact-methods">
+                        <a href="mailto:borjaquer12@gmail.com?subject=WallaBot%20Pro%20-%20Quiero%20mi%20licencia" class="contact-btn glass">
+                            <span class="contact-icon">📧</span>
+                            <span>
+                                <strong>Email</strong>
+                                <small>borjaquer12@gmail.com</small>
+                            </span>
+                        </a>
+                        <a href="https://wa.me/?text=Hola%2C%20quiero%20info%20sobre%20WallaBot%20Pro" target="_blank" class="contact-btn glass">
+                            <span class="contact-icon">💬</span>
+                            <span>
+                                <strong>WhatsApp</strong>
+                                <small>Escríbeme directamente</small>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-guarantee">
+                    <div class="guarantee-badge">🛡️</div>
+                    <h4>Garantía de 7 días</h4>
+                    <p>Si no estás satisfecho, te devolvemos el dinero sin preguntas. Pruébalo sin riesgo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">Walla<span class="accent">Bot</span> Pro</span>
+                </div>
+                <p class="footer-copy">© <span id="footer-year">2026</span> WallaBot Pro. Todos los derechos reservados.</p>
+                <p class="footer-disclaimer">Este producto es una herramienta de automatización. El uso es responsabilidad del usuario.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
