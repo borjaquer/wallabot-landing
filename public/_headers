@@ -1,0 +1,15 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/*.crx
+  Content-Type: application/x-chrome-extension
+  Content-Disposition: attachment; filename="wallabot-1.0.0.crx"
+
+/*.xml
+  Content-Type: application/xml
+
+/*.svg
+  Content-Type: image/svg+xml
