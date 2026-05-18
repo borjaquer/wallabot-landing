@@ -1,0 +1,91 @@
+---
+// StripeCheckout.astro — Botón de pago que llama a la Edge Function de Supabase
+// Props:
+//   priceId: ID de precio de Stripe (obligatorio)
+//   buttonText: Texto del botón
+//   buttonClass: Clases CSS adicionales
+//   email: Email opcional para pre-rellenar en Stripe
+//   variant: 'primary' | 'secondary'
+
+export interface Props {
+  priceId: string;
+  buttonText?: string;
+  buttonClass?: string;
+  email?: string;
+  variant?: 'primary' | 'secondary';
+}
+
+const {
+  priceId,
+  buttonText = 'Suscribirse',
+  buttonClass = '',
+  email = '',
+  variant = 'primary',
+} = Astro.props;
+
+const baseClasses = variant === 'primary'
+  ? 'w-full py-3 px-6 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed'
+  : 'w-full py-3 px-6 border-2 border-gray-200 text-gray-900 font-semibold rounded-xl hover:border-gray-300 hover:bg-gray-50 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
+---
+
+<button
+  type="button"
+  class:list={[baseClasses, buttonClass]}
+  data-stripe-price={priceId}
+  data-stripe-email={email}
+>
+  {buttonText}
+</button>
+
+<script>
+  const EDGE_URL = 'https://dqvukbetvrfsjieqmnbq.supabase.co/functions/v1/create-checkout';
+  const ANON_KEY = 'sb_publishable_1lzZmrmw7IPdqvXkSxiQ3A_8w2ulCcW';
+
+  document.querySelectorAll('[data-stripe-price]').forEach(btn => {
+    btn.addEventListener('click', async function (this: HTMLButtonElement) {
+      if (this.disabled) return;
+
+      const priceId = this.dataset.stripePrice;
+      const email = this.dataset.stripeEmail || '';
+      const originalText = this.textContent || '';
+
+      this.disabled = true;
+      this.textContent = 'Redirigiendo...';
+
+      try {
+        const res = await fetch(EDGE_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${ANON_KEY}`,
+            'apikey': ANON_KEY,
+          },
+          body: JSON.stringify({
+            priceId,
+            email,
+            successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancelUrl: `${window.location.origin}/#precios`,
+          }),
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.error || `Error ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          throw new Error('No se recibió URL de checkout');
+        }
+      } catch (err) {
+        console.error('Stripe checkout error:', err);
+        alert('Error al conectar con Stripe. Por favor, inténtalo de nuevo.');
+        this.disabled = false;
+        this.textContent = originalText;
+      }
+    });
+  });
+</script>

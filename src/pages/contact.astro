@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contacto — WallaBot"
+  description="Contacta con el equipo de WallaBot. Soporte técnico, dudas comerciales o cualquier consulta sobre la extensión."
+  canonicalURL="https://wallabot.pro/contact"
+>
+  <Navbar />
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-green-600 uppercase tracking-wider">Contacto</span>
+        <h1 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+          Estamos aquí para ayudarte
+        </h1>
+        <p class="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+          ¿Dudas? ¿Problemas? ¿Sugerencias? Escríbenos y te responderemos en menos de 24 horas.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-8 mb-12">
+        <!-- Email -->
+        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-center">
+          <div class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M22 4L12 13 2 4"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Email</h3>
+          <a href="mailto:hola@wallabot.pro" class="text-green-600 hover:underline font-medium">hola@wallabot.pro</a>
+          <p class="mt-1 text-sm text-gray-500">Respuesta en {'<24h'}</p>
+        </div>
+
+        <!-- Soporte prioritario -->
+        <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-center">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2">Soporte Prioritario</h3>
+          <p class="text-sm text-gray-600">Exclusivo para clientes Premium Anual.</p>
+          <p class="mt-1 text-sm text-gray-500">Respuesta en {'<8h'}</p>
+        </div>
+      </div>
+
+      <!-- Horario -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 mb-12">
+        <h3 class="font-bold text-gray-900 mb-3">Horario de atención</h3>
+        <p class="text-sm text-gray-600">Lunes a Viernes: 9:00 - 18:00 (CET)</p>
+        <p class="text-sm text-gray-600">Fines de semana y festivos: solo incidencias críticas</p>
+      </div>
+
+      <!-- FAQ link -->
+      <div class="text-center p-8 bg-gray-900 rounded-2xl text-white">
+        <h3 class="text-xl font-bold">Antes de escribir...</h3>
+        <p class="mt-2 text-gray-400">Quizá tu pregunta ya tiene respuesta en nuestras FAQ.</p>
+        <a
+          href="/faq"
+          class="mt-4 inline-flex items-center px-6 py-3 bg-green-500 text-white font-semibold rounded-xl hover:bg-green-400 transition-colors no-underline"
+        >
+          Ver preguntas frecuentes
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  {
+    q: '¿Es legal usar WallaBot en Wallapop?',
+    a: 'Sí. WallaBot funciona como una extensión de Chrome que automatiza tu navegador. No vulnera los términos de Wallapop porque ejecuta las acciones como lo harías tú manualmente. Además, al ser una extensión y no un bot externo, es indetectable.',
+  },
+  {
+    q: '¿Necesito tener el ordenador encendido todo el día?',
+    a: 'Sí, necesitas Chrome abierto con la extensión activa. Pero consume muy pocos recursos (menos que tener Gmail abierto). Muchos usuarios lo dejan en un portátil viejo o en segundo plano mientras trabajan.',
+  },
+  {
+    q: '¿Cómo sabe el bot qué responder?',
+    a: 'WallaBot usa inteligencia artificial (Groq) entrenada con los datos de tus productos. Conoce el precio, estado, descripción y condiciones de envío de cada artículo. También aprende tu estilo de comunicación para sonar natural.',
+  },
+  {
+    q: '¿Puedo configurar precios mínimos para negociar?',
+    a: 'Sí. Puedes definir un margen de descuento máximo (por defecto 7%). El bot nunca venderá por debajo de ese límite. Tú tienes el control total de los márgenes.',
+  },
+  {
+    q: '¿Y si no sé instalar extensiones?',
+    a: 'Es muy fácil. Descargas un archivo, lo arrastras a Chrome y listo. En 2 minutos está funcionando. Además tienes soporte por email si necesitas ayuda. Consulta nuestra <a href="/download" class="text-green-600 hover:underline">guía de instalación</a>.',
+  },
+  {
+    q: '¿Puedo cancelar cuando quiera?',
+    a: 'Sí, sin permanencia. Cancelas desde tu panel y la suscripción se detiene al final del período facturado. Sin preguntas, sin complicaciones.',
+  },
+  {
+    q: '¿Cuántos productos puedo gestionar?',
+    a: 'Con el plan Premium Mensual puedes gestionar hasta 100 productos. Con el plan Premium Anual no hay límite. Puedes cambiar de plan en cualquier momento.',
+  },
+  {
+    q: '¿Cómo se realiza el pago?',
+    a: 'Usamos Stripe, la plataforma de pagos más segura del mundo. Aceptamos tarjetas de crédito/débito (Visa, Mastercard, American Express). Tus datos de pago nunca pasan por nuestros servidores.',
+  },
+  {
+    q: '¿Hay período de prueba?',
+    a: 'Sí, ofrecemos 14 días de prueba gratis. Puedes usar todas las funciones sin límites. Si no estás satisfecho, cancela antes de que termine la prueba y no se te cobrará nada.',
+  },
+  {
+    q: '¿Ofrecéis descuentos para profesionales?',
+    a: 'El plan anual ya incluye un 28% de descuento frente al mensual. Si eres una tienda con necesidades especiales, escríbenos a <a href="mailto:hola@wallabot.pro" class="text-green-600 hover:underline">hola@wallabot.pro</a> y lo hablamos.',
+  },
+  {
+    q: '¿Qué pasa si Wallapop cambia su web?',
+    a: 'Monitorizamos constantemente los cambios de Wallapop. Si algo se rompe, publicamos una actualización en menos de 24-48 horas. Tu extensión se actualiza automáticamente.',
+  },
+  {
+    q: '¿Puedo usar WallaBot en varios ordenadores?',
+    a: 'La licencia es por cuenta de Wallapop. Puedes instalar la extensión en varios ordenadores, pero solo funcionará en uno a la vez para evitar conflictos.',
+  },
+];
+---
+
+<Layout
+  title="FAQ — Preguntas Frecuentes | WallaBot"
+  description="Respuestas a las preguntas más frecuentes sobre WallaBot: legalidad, funcionamiento, precios, instalación y más."
+  canonicalURL="https://wallabot.pro/faq"
+>
+  <Navbar />
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-green-600 uppercase tracking-wider">FAQ</span>
+        <h1 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight">
+          Preguntas frecuentes
+        </h1>
+        <p class="mt-4 text-lg text-gray-600">
+          Todo lo que necesitas saber sobre WallaBot. Si no encuentras tu respuesta, <a href="/contact" class="text-green-600 hover:underline">contáctanos</a>.
+        </p>
+      </div>
+
+      <!-- FAQ Items -->
+      <div class="space-y-4">
+        {
+          faqs.map((faq) => (
+            <details class="group bg-white rounded-xl border border-gray-100 p-5 hover:border-gray-200 transition-colors">
+              <summary class="font-semibold text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 after:content-['+'] after:text-xl after:text-gray-400 after:font-light group-open:after:content-['−'] group-open:after:text-green-600">
+                {faq.q}
+              </summary>
+              <div class="mt-3 text-sm text-gray-600 leading-relaxed [&_a]:text-green-600 [&_a]:hover:underline" set:html={faq.a} />
+            </details>
+          ))
+        }
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 text-center p-8 bg-gray-900 rounded-2xl text-white">
+        <h3 class="text-xl font-bold">¿No encuentras lo que buscas?</h3>
+        <p class="mt-2 text-gray-400">Escríbenos y te responderemos en menos de 24 horas.</p>
+        <a
+          href="/contact"
+          class="mt-4 inline-flex items-center px-6 py-3 bg-green-500 text-white font-semibold rounded-xl hover:bg-green-400 transition-colors no-underline"
+        >
+          Contactar con soporte
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

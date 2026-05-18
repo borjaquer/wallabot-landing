@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Términos y Condiciones — WallaBot"
+  description="Términos y condiciones de uso de WallaBot. Condiciones del servicio, responsabilidades y políticas de suscripción."
+  canonicalURL="https://wallabot.pro/terms"
+>
+  <Navbar />
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">Términos y Condiciones</h1>
+      <p class="text-sm text-gray-400 mb-10">Última actualización: Mayo 2026</p>
+
+      <div class="prose prose-gray max-w-none space-y-8 text-sm leading-relaxed">
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">1. Aceptación de los Términos</h2>
+          <p>Al instalar y utilizar la extensión WallaBot ("el Servicio"), aceptas estos Términos y Condiciones. Si no estás de acuerdo con alguna parte, no utilices el Servicio.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">2. Descripción del Servicio</h2>
+          <p>WallaBot es una extensión de Chrome que automatiza respuestas en la plataforma Wallapop utilizando inteligencia artificial. El Servicio se proporciona "tal cual" y no garantizamos disponibilidad ininterrumpida.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">3. Suscripción y Pagos</h2>
+          <p>El Servicio opera bajo un modelo de suscripción mensual o anual. Los pagos se procesan a través de Stripe. La suscripción se renueva automáticamente al final de cada período de facturación. Puedes cancelar en cualquier momento desde tu panel de control.</p>
+          <p class="mt-2">Ofrecemos 14 días de prueba gratuita para nuevos usuarios. Si cancelas antes de que termine el período de prueba, no se realizará ningún cargo.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">4. Reembolsos</h2>
+          <p>Ofrecemos garantía de devolución de 7 días a partir del primer pago. Si no estás satisfecho con el Servicio, contacta con nosotros en <a href="mailto:hola@wallabot.pro" class="text-green-600 hover:underline">hola@wallabot.pro</a> y te reembolsaremos el importe.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">5. Uso Aceptable</h2>
+          <p>Te comprometes a:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>Usar el Servicio de acuerdo con los términos de uso de Wallapop.</li>
+            <li>No utilizar el Servicio para actividades ilegales o fraudulentas.</li>
+            <li>No revender, redistribuir o sublicenciar el Servicio sin autorización expresa.</li>
+            <li>No realizar ingeniería inversa sobre el código del Servicio.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">6. Limitación de Responsabilidad</h2>
+          <p>WallaBot no se hace responsable de:</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>Pérdidas de ventas o ingresos derivadas del uso del Servicio.</li>
+            <li>Suspensión o baneo de cuentas de Wallapop por el uso de herramientas de automatización.</li>
+            <li>Daños indirectos o consecuentes del uso o imposibilidad de uso del Servicio.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">7. Propiedad Intelectual</h2>
+          <p>El código, nombre, logo y diseño de WallaBot son propiedad exclusiva de WallaBot. No adquieres ningún derecho de propiedad sobre el software, solo una licencia de uso limitada mientras tu suscripción esté activa.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">8. Modificaciones del Servicio</h2>
+          <p>Nos reservamos el derecho de modificar, suspender o discontinuar el Servicio en cualquier momento. Las modificaciones de precios se comunicarán con al menos 30 días de antelación.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">9. Ley Aplicable</h2>
+          <p>Estos términos se rigen por la legislación española. Cualquier disputa se resolverá en los tribunales de España.</p>
+        </section>
+
+        <section>
+          <h2 class="text-xl font-bold text-gray-900 mb-3">10. Contacto</h2>
+          <p>Para cualquier duda sobre estos términos, contáctanos en <a href="mailto:hola@wallabot.pro" class="text-green-600 hover:underline">hola@wallabot.pro</a>.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,140 @@
+---
+import '../styles/global.css';
+
+// Layout base para la landing de WallaBot
+export interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description,
+  ogTitle = title,
+  ogDescription = description,
+  ogImage = '/og-image.png',
+  canonicalURL = 'https://wallabot.pro',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalURL}>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={ogDescription}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalURL}>
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={ogTitle}>
+  <meta name="twitter:description" content={ogDescription}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Schema.org: SoftwareApplication -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WallaBot",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Chrome",
+      "description": "Extensión de Chrome que automatiza respuestas en Wallapop usando IA 24/7",
+      "offers": {
+        "@type": "Offer",
+        "price": "29.00",
+        "priceCurrency": "EUR",
+        "description": "Suscripción mensual"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "ratingCount": "127"
+      }
+    }
+  </script>
+
+  <!-- Stripe.js -->
+  <script is:inline src="https://js.stripe.com/v3/" async></script>
+</head>
+<body class="bg-white text-gray-900 antialiased font-['Inter',system-ui,sans-serif]">
+  <slot />
+
+  <!-- Scripts -->
+  <script>
+    // Chat animation — mensajes simulados del mockup
+    const messages = [
+      { text: 'Hola! Sigue disponible el sofá? 🙂', from: 'buyer', delay: 1500 },
+      { text: '¡Sí! Está disponible 😊 ¿Te interesa?', from: 'seller', delay: 3500 },
+      { text: 'Sí, me gusta mucho. ¿Precio negociable?', from: 'buyer', delay: 6000 },
+      { text: 'Te puedo hacer 180€ si lo recoges esta semana. Es casi nuevo, tiene solo 6 meses.', from: 'seller', delay: 8500 },
+      { text: 'Vale, 180€ me parece bien. ¿Quedamos mañana?', from: 'buyer', delay: 11500 },
+    ];
+
+    const chatBody = document.getElementById('chatBody');
+    const chatCursor = document.getElementById('chatCursor');
+
+    if (chatBody && chatCursor) {
+      messages.forEach((msg, i) => {
+        setTimeout(() => {
+          const div = document.createElement('div');
+          div.className = msg.from === 'buyer' 
+            ? 'flex items-start gap-2 mb-3'
+            : 'flex items-start gap-2 mb-3 justify-end';
+          
+          if (msg.from === 'buyer') {
+            div.innerHTML = `<span class="w-7 h-7 rounded-full bg-gray-300 flex-shrink-0 flex items-center justify-center text-xs text-white">M</span>`;
+          }
+          
+          const bubble = document.createElement('span');
+          bubble.className = msg.from === 'buyer'
+            ? 'bg-gray-100 text-gray-900 px-3 py-2 rounded-2xl rounded-bl-sm text-sm max-w-[80%]'
+            : 'bg-green-500 text-white px-3 py-2 rounded-2xl rounded-br-sm text-sm max-w-[80%]';
+          bubble.textContent = msg.text;
+          div.appendChild(bubble);
+          
+          chatBody.appendChild(div);
+          chatBody.scrollTop = chatBody.scrollHeight;
+          
+          if (i === messages.length - 1) {
+            chatCursor.textContent = '...';
+          }
+        }, msg.delay);
+      });
+    }
+
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('shadow-sm', window.scrollY > 10);
+        nav.classList.toggle('border-b', window.scrollY > 10);
+        nav.classList.toggle('border-gray-100', window.scrollY > 10);
+      });
+    }
+  </script>
+</body>
+</html>

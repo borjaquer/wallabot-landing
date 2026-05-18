@@ -1,0 +1,214 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+// Dashboard de usuario — requiere login con Google OAuth
+// Muestra estado de suscripción y permite gestionar el bot
+---
+
+<Layout
+  title="Dashboard — WallaBot"
+  description="Panel de control de tu suscripción WallaBot. Gestiona tu plan, configura tu extensión y monitoriza tus ventas."
+  canonicalURL="https://wallabot.pro/dashboard"
+>
+  <Navbar />
+
+  <main class="pt-24 pb-16 sm:pt-32 sm:pb-24 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Dashboard</h1>
+          <p class="mt-1 text-gray-500" id="userEmail">Cargando...</p>
+        </div>
+        <button id="btnLogout" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+          Cerrar sesión
+        </button>
+      </div>
+
+      <!-- Estado de suscripción (sin login: placeholder) -->
+      <div id="subscriptionCard" class="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 sm:p-8 mb-8">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-gray-900">Inicia sesión para ver tu suscripción</h3>
+            <p class="text-sm text-gray-600 mt-1">Accede con Google para gestionar tu plan, facturación y configuración.</p>
+          </div>
+        </div>
+        <div class="mt-6">
+          <a href="/login" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-colors no-underline">
+            Iniciar sesión con Google
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="grid sm:grid-cols-3 gap-4 mb-8">
+        <a href="/download" class="bg-white rounded-xl border border-gray-100 p-5 hover:border-gray-200 hover:shadow-sm transition-all no-underline">
+          <div class="w-10 h-10 rounded-lg bg-green-50 text-green-600 flex items-center justify-center mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 text-sm">Descargar extensión</h4>
+          <p class="text-xs text-gray-500 mt-1">Instala la última versión</p>
+        </a>
+
+        <a href="/faq" class="bg-white rounded-xl border border-gray-100 p-5 hover:border-gray-200 hover:shadow-sm transition-all no-underline">
+          <div class="w-10 h-10 rounded-lg bg-green-50 text-green-600 flex items-center justify-center mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 text-sm">Ayuda y FAQ</h4>
+          <p class="text-xs text-gray-500 mt-1">Respuestas a dudas comunes</p>
+        </a>
+
+        <a href="/contact" class="bg-white rounded-xl border border-gray-100 p-5 hover:border-gray-200 hover:shadow-sm transition-all no-underline">
+          <div class="w-10 h-10 rounded-lg bg-green-50 text-green-600 flex items-center justify-center mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+          </div>
+          <h4 class="font-semibold text-gray-900 text-sm">Soporte</h4>
+          <p class="text-xs text-gray-500 mt-1">Contacta con nosotros</p>
+        </a>
+      </div>
+
+      <!-- Pasos iniciales -->
+      <div class="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-4">Primeros pasos</h2>
+        <ol class="space-y-4">
+          <li class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+            <div>
+              <h4 class="font-semibold text-gray-900 text-sm">Suscríbete a Premium</h4>
+              <p class="text-sm text-gray-600 mt-0.5">Elige tu plan y activa tu período de prueba de 14 días.</p>
+            </div>
+          </li>
+          <li class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+            <div>
+              <h4 class="font-semibold text-gray-900 text-sm">Descarga e instala la extensión</h4>
+              <p class="text-sm text-gray-600 mt-0.5">Sigue la <a href="/download" class="text-green-600 hover:underline">guía de instalación</a>. Son 2 minutos.</p>
+            </div>
+          </li>
+          <li class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+            <div>
+              <h4 class="font-semibold text-gray-900 text-sm">Activa el bot</h4>
+              <p class="text-sm text-gray-600 mt-0.5">Abre el panel de la extensión y haz clic en "Activar Premium".</p>
+            </div>
+          </li>
+          <li class="flex gap-3">
+            <div class="w-7 h-7 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">4</div>
+            <div>
+              <h4 class="font-semibold text-gray-900 text-sm">Deja que trabaje solo</h4>
+              <p class="text-sm text-gray-600 mt-0.5">WallaBot escaneará tus chats y responderá automáticamente 24/7.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  const SUPABASE_URL = 'https://dqvukbetvrfsjieqmnbq.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_1lzZmrmw7IPdqvXkSxiQ3A_8w2ulCcW';
+
+  const supabaseScript = document.createElement('script');
+  supabaseScript.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+  supabaseScript.onload = async () => {
+    const supabase = (window as any).supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const { data: { session } } = await supabase.auth.getSession();
+
+    const emailEl = document.getElementById('userEmail');
+    const subCard = document.getElementById('subscriptionCard');
+
+    if (session?.user) {
+      if (emailEl) emailEl.textContent = session.user.email || 'Usuario autenticado';
+
+      // Verificar estado premium
+      try {
+        const res = await fetch(
+          `${SUPABASE_URL}/functions/v1/verify-premium`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+              'apikey': SUPABASE_ANON_KEY,
+            },
+            body: JSON.stringify({ email: session.user.email }),
+          }
+        );
+
+        const premiumData = await res.json();
+
+        if (subCard) {
+          if (premiumData.premium) {
+            subCard.innerHTML = `
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center flex-shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900">Suscripción Premium Activa</h3>
+                  <p class="text-sm text-gray-600 mt-1">Plan: ${premiumData.plan || 'Premium'} · Próximo pago: ${premiumData.renewal_date || 'N/A'}</p>
+                </div>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a href="https://billing.stripe.com/p/login/test_XXX" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors no-underline">
+                  Gestionar facturación
+                </a>
+              </div>
+            `;
+          } else {
+            subCard.innerHTML = `
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900">Sin suscripción activa</h3>
+                  <p class="text-sm text-gray-600 mt-1">Activa tu suscripción Premium para empezar a usar WallaBot.</p>
+                </div>
+              </div>
+              <div class="mt-6">
+                <a href="/#precios" class="inline-flex items-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-colors no-underline">
+                  Ver planes
+                </a>
+              </div>
+            `;
+          }
+        }
+      } catch {
+        if (subCard) {
+          subCard.innerHTML = `
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Error al verificar suscripción</h3>
+                <p class="text-sm text-gray-600 mt-1">No se pudo conectar con el servidor. Inténtalo más tarde.</p>
+              </div>
+            </div>
+          `;
+        }
+      }
+    }
+
+    // Logout
+    document.getElementById('btnLogout')?.addEventListener('click', async () => {
+      await supabase.auth.signOut();
+      window.location.href = '/';
+    });
+  };
+  document.head.appendChild(supabaseScript);
+</script>

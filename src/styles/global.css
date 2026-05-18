@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* ============================================================
+   WallaBot Landing — Estilos globales
+   ============================================================ */
+
+@theme {
+  --color-walla-black: #121212;
+  --color-walla-green: #16a34a;
+  --color-walla-green-light: #22c55e;
+  --color-walla-gray-50: #fafafa;
+  --color-walla-gray-100: #f5f5f5;
+  --color-walla-gray-200: #e5e5e5;
+  --color-walla-gray-300: #d4d4d4;
+  --color-walla-gray-400: #a3a3a3;
+  --color-walla-gray-500: #737373;
+  --color-walla-gray-600: #525252;
+  --color-walla-gray-700: #404040;
+  --color-walla-gray-800: #262626;
+  --color-walla-gray-900: #171717;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-white text-walla-gray-900 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Focus ring accesible */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-walla-green rounded;
+}
+
+/* Selection */
+::selection {
+  @apply bg-walla-green/20 text-walla-black;
+}
